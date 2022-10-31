@@ -4,10 +4,7 @@ pub fn part_one(input: &str) -> Option<u32> {
         let three_vowels: bool = line
             .trim()
             .chars()
-            .filter(|&c| match c {
-                'a' | 'e' | 'i' | 'o' | 'u' => true,
-                _ => false,
-            })
+            .filter(|&c| matches!(c, 'a' | 'e' | 'i' | 'o' | 'u'))
             .count()
             >= 3;
 
@@ -17,14 +14,11 @@ pub fn part_one(input: &str) -> Option<u32> {
             .zip(line.chars().skip(1))
             .any(|(a, b)| a == b);
 
-        let no_forbidden_strings: bool =
-            line.trim()
-                .chars()
-                .zip(line.chars().skip(1))
-                .all(|ab| match ab {
-                    ('a', 'b') | ('c', 'd') | ('p', 'q') | ('x', 'y') => false,
-                    _ => true,
-                });
+        let no_forbidden_strings: bool = line
+            .trim()
+            .chars()
+            .zip(line.chars().skip(1))
+            .all(|ab| matches!(ab, ('a', 'b') | ('c', 'd') | ('p', 'q') | ('x', 'y')));
 
         if three_vowels && twice_in_a_row && no_forbidden_strings {
             count += 1;
