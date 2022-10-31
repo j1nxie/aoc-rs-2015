@@ -18,7 +18,7 @@ pub fn part_one(input: &str) -> Option<u32> {
             .trim()
             .chars()
             .zip(line.chars().skip(1))
-            .all(|ab| matches!(ab, ('a', 'b') | ('c', 'd') | ('p', 'q') | ('x', 'y')));
+            .all(|ab| !matches!(ab, ('a', 'b') | ('c', 'd') | ('p', 'q') | ('x', 'y')));
 
         if three_vowels && twice_in_a_row && no_forbidden_strings {
             count += 1;
