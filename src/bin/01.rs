@@ -7,7 +7,7 @@ pub fn part_one(input: &str) -> Option<i32> {
             floors -= 1;
         }
     }
-    return Some(floors);
+    Some(floors)
 }
 
 pub fn part_two(input: &str) -> Option<i32> {
@@ -25,7 +25,7 @@ pub fn part_two(input: &str) -> Option<i32> {
             return Some(count);
         }
     }
-    return Some(0);
+    Some(0)
 }
 
 fn main() {

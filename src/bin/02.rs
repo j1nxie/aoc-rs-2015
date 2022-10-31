@@ -28,7 +28,7 @@ pub fn part_one(input: &str) -> Option<u32> {
         total += top + side + front + min / 2;
     }
 
-    return Some(total);
+    Some(total)
 }
 
 pub fn part_two(input: &str) -> Option<u32> {
@@ -59,7 +59,7 @@ pub fn part_two(input: &str) -> Option<u32> {
         total += 2 * (smallest_side.0 + smallest_side.1) + volume;
     }
 
-    return Some(total);
+    Some(total)
 }
 
 fn main() {
