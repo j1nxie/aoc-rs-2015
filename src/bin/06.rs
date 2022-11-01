@@ -19,9 +19,9 @@ pub fn part_one(input: &str) -> Option<u32> {
                     let end_x = end[0].parse::<usize>().unwrap();
                     let end_y = end[1].parse::<usize>().unwrap();
 
-                    for i in start_x..=end_x {
-                        for j in start_y..=end_y {
-                            lights[i][j].brightness = 1;
+                    for row in lights.iter_mut().take(end_x + 1).skip(start_x) {
+                        for light in row.iter_mut().take(end_y + 1).skip(start_y) {
+                            light.brightness = 1;
                         }
                     }
                 }
@@ -34,9 +34,9 @@ pub fn part_one(input: &str) -> Option<u32> {
                     let end_x = end[0].parse::<usize>().unwrap();
                     let end_y = end[1].parse::<usize>().unwrap();
 
-                    for i in start_x..=end_x {
-                        for j in start_y..=end_y {
-                            lights[i][j].brightness = 0;
+                    for row in lights.iter_mut().take(end_x + 1).skip(start_x) {
+                        for light in row.iter_mut().take(end_y + 1).skip(start_y) {
+                            light.brightness = 0;
                         }
                     }
                 }
@@ -53,11 +53,11 @@ pub fn part_one(input: &str) -> Option<u32> {
             let end_x = end[0].parse::<usize>().unwrap();
             let end_y = end[1].parse::<usize>().unwrap();
 
-            for i in start_x..=end_x {
-                for j in start_y..=end_y {
-                    match lights[i][j].brightness {
-                        0 => lights[i][j].brightness = 1,
-                        1 => lights[i][j].brightness = 0,
+            for row in lights.iter_mut().take(end_x + 1).skip(start_x) {
+                for light in row.iter_mut().take(end_y + 1).skip(start_y) {
+                    match light.brightness {
+                        0 => light.brightness = 1,
+                        1 => light.brightness = 0,
                         _ => continue,
                     }
                 }
@@ -90,9 +90,9 @@ pub fn part_two(input: &str) -> Option<u32> {
                     let end_x = end[0].parse::<usize>().unwrap();
                     let end_y = end[1].parse::<usize>().unwrap();
 
-                    for i in start_x..=end_x {
-                        for j in start_y..=end_y {
-                            lights[i][j].brightness += 1;
+                    for row in lights.iter_mut().take(end_x + 1).skip(start_x) {
+                        for light in row.iter_mut().take(end_y + 1).skip(start_y) {
+                            light.brightness += 1;
                         }
                     }
                 }
@@ -105,11 +105,12 @@ pub fn part_two(input: &str) -> Option<u32> {
                     let end_x = end[0].parse::<usize>().unwrap();
                     let end_y = end[1].parse::<usize>().unwrap();
 
-                    for i in start_x..=end_x {
-                        for j in start_y..=end_y {
-                            lights[i][j].brightness -= 1;
-                            if lights[i][j].brightness < 0 {
-                                lights[i][j].brightness = 0;
+                    for row in lights.iter_mut().take(end_x + 1).skip(start_x) {
+                        for light in row.iter_mut().take(end_y + 1).skip(start_y) {
+                            light.brightness -= 1;
+
+                            if light.brightness < 0 {
+                                light.brightness = 0;
                             }
                         }
                     }
@@ -127,9 +128,9 @@ pub fn part_two(input: &str) -> Option<u32> {
             let end_x = end[0].parse::<usize>().unwrap();
             let end_y = end[1].parse::<usize>().unwrap();
 
-            for i in start_x..=end_x {
-                for j in start_y..=end_y {
-                    lights[i][j].brightness += 2;
+            for row in lights.iter_mut().take(end_x + 1).skip(start_x) {
+                for light in row.iter_mut().take(end_y + 1).skip(start_y) {
+                    light.brightness += 2;
                 }
             }
         }
