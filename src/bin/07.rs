@@ -2,11 +2,7 @@ use std::collections::HashMap;
 
 fn parser(cmd: &str, values: &mut HashMap<String, u32>) -> Option<()> {
     fn get(values: &HashMap<String, u32>, idx: &str) -> Option<u32> {
-        if let Some(x) = values.get(idx) {
-            Some(*x)
-        } else {
-            None
-        }
+        values.get(idx).copied()
     }
 
     let get_value = |cmd: &str| -> Option<u32> {
