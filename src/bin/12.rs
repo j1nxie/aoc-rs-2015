@@ -3,8 +3,7 @@ use regex::Regex;
 
 fn has_red(json: &JsonValue) -> bool {
     json.entries()
-        .find(|(_, v)| v.is_string() && v.as_str().unwrap().eq_ignore_ascii_case("red"))
-        .is_some()
+        .any(|(_, v)| v.is_string() && v.as_str().unwrap().eq_ignore_ascii_case("red"))
 }
 
 fn count_objects(json: &JsonValue, ignore_red: bool) -> i32 {
