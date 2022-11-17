@@ -20,7 +20,7 @@ pub fn part_one(input: &str) -> Option<u32> {
     let set: HashSet<String> = replacements
         .trim()
         .lines()
-        .map(|l| split_replacement(l))
+        .map(split_replacement)
         .flat_map(|(from, to)| {
             molecule
                 .match_indices(from)
